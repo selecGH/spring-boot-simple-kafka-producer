@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    # Setting up local profile to not version the properties file and set develop values like kafka cluster.
+    active: local
+  kafka:
+    bootstrap-servers: ${kafka.bootstrap-servers}
