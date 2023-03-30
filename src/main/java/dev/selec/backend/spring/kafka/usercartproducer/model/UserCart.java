@@ -25,4 +25,8 @@ public final class UserCart implements Serializable {
     @Builder.Default
     private LocalDateTime createdAt = LocalDateTime.now();
 
+    public static UserCart createRandom() {
+        return null;
+    }
+
 }
