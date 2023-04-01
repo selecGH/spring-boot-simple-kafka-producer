@@ -23,9 +23,10 @@ public class UsercartProducerApplication {
     CommandLineRunner commandLineRunner(KafkaTemplate<String, UserCart> kafkaTemplate) {
         return args -> Executors.newSingleThreadExecutor().submit(() -> {
             while (true) {
-                log.info("Send message to Kafka-topic");
-                kafkaTemplate.send("user-carts", UserCart.createRandom());
-                sleep(1000L);
+                UserCart userCart = UserCart.createRandom();
+                log.info("Send new cart to Kafka topic {}", userCart.toString());
+                kafkaTemplate.send("user-carts", userCart);
+                sleep(10000L);
             }
         });
     }

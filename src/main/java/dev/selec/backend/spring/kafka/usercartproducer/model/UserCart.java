@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import dev.selec.backend.spring.kafka.usercartproducer.serializer.JsonDateDeserializer;
 import dev.selec.backend.spring.kafka.usercartproducer.serializer.JsonDateSerializer;
+import dev.selec.backend.spring.kafka.usercartproducer.util.UserCartRandom;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,15 +34,15 @@ public final class UserCart implements Serializable {
 
     public static UserCart createRandom() {
         return UserCart.builder()
-                .userId(1L)
+                .userId(UserCartRandom.getRandomUserId())
                 .products(List.of(UserProduct.builder()
                                 .product(Product.builder()
-                                        .id(1)
-                                        .name("product_name")
-                                        .company("company")
-                                        .price(12.4)
+                                        .id(UserCartRandom.getRandomProductId())
+                                        .name(UserCartRandom.getRandomProductName())
+                                        .company(UserCartRandom.getRandomCompanyName())
+                                        .price(UserCartRandom.getRandomProductPrice())
                                         .build())
-                                .quantity(1)
+                                .quantity(UserCartRandom.getRandomQuantity())
                         .build()))
                 .build();
     }

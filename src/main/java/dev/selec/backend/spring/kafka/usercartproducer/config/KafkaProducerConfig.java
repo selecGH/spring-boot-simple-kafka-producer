@@ -4,7 +4,6 @@ import dev.selec.backend.spring.kafka.usercartproducer.model.UserCart;
 import dev.selec.backend.spring.kafka.usercartproducer.serializer.UserCartSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -17,8 +16,11 @@ import java.util.Map;
 @Configuration
 public class KafkaProducerConfig {
 
-    @Autowired
-    private KafkaClusterConfig clusterConfig;
+    private final KafkaClusterConfig clusterConfig;
+
+    public KafkaProducerConfig(KafkaClusterConfig clusterConfig) {
+        this.clusterConfig = clusterConfig;
+    }
 
     public Map<String, Object> kafkaProps() {
         HashMap<String, Object> props = new HashMap<>();
