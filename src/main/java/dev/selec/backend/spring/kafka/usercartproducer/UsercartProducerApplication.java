@@ -25,6 +25,7 @@ public class UsercartProducerApplication {
             while (true) {
                 log.info("Send message to Kafka-topic");
                 kafkaTemplate.send("user-carts", UserCart.createRandom());
+                sleep(1000L);
             }
         });
     }
