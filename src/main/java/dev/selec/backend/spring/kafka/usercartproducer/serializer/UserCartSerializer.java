@@ -5,7 +5,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.selec.backend.spring.kafka.usercartproducer.exception.UserCartProducerException;
 import dev.selec.backend.spring.kafka.usercartproducer.model.UserCart;
 import org.apache.kafka.common.serialization.Serializer;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserCartSerializer implements Serializer<UserCart> {
 
     private final ObjectMapper objectMapper = new ObjectMapper();

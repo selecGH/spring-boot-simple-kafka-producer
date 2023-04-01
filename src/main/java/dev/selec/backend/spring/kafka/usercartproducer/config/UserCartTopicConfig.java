@@ -11,6 +11,8 @@ public class UserCartTopicConfig {
     @Bean
     public NewTopic userCartTopic() {
         return TopicBuilder.name("user-carts")
+                .replicas(2)
+                .partitions(2)
                 .build();
     }
 
