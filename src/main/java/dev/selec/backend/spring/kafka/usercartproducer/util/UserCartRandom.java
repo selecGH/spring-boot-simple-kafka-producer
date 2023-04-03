@@ -23,11 +23,11 @@ public class UserCartRandom {
         return faker.beer().name();
     }
     public static Integer getRandomProductId() {
-        return ThreadLocalRandom.current().nextInt();
+        return ThreadLocalRandom.current().nextInt(1, 10000);
     }
 
     public static Long getRandomUserId() {
-        return ThreadLocalRandom.current().nextLong();
+        return ThreadLocalRandom.current().nextLong(1L, 1000000L);
     }
 
     public static Double getRandomProductPrice() {

@@ -5,8 +5,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConfigurationProperties(prefix = "kafka-topic")
+@ConfigurationProperties(prefix = "internal.kafka.topics.user-carts")
 @Data
-public class KafkaUserCartConfig {
-    private String userCart;
+public class KafkaTopicUserCartProps {
+    private String name;
+    private Integer partitions;
+    private Integer replicas;
 }

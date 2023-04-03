@@ -1,6 +1,34 @@
 spring:
   profiles:
-    # Setting up local profile to not version the properties file and set develop values like kafka cluster.
     active: local
   kafka:
-    bootstrap-servers: ${kafka.bootstrap-servers}
+    properties:
+      basic:
+        auth:
+          credentials:
+            source: USER_INFO
+          user:
+            info: ${dev.selec.backend.local.kafka-user}:${dev.selec.backend.local.kafka-secret}
+      schema:
+        registry:
+          url: ${dev.selec.backend.local.kafka-schema-registry-url}
+      security:
+        protocol: SASL_SSL
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='KRFNEETUUSBJ2SYP' password='6Jo98e/IpBp6d+EsS3yGktX9YEI6ucjs1/pCwFCAG7N83gvHFNm/A1NOIbkSOGd/';
+      session:
+        timeout:
+          ms: 45000
+    bootstrap-servers: ${dev.selec.backend.local.kafka-bootstrap-servers}
+    producer:
+      value-serializer: dev.selec.backend.spring.kafka.usercartproducer.serializer.UserCartSerializer
+
+internal:
+  kafka:
+    topics:
+     user-carts:
+      name: user-carts
+      replicas: 3
+      partitions: 3
