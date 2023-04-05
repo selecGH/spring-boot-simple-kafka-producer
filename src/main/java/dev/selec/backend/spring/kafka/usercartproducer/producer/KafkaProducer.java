@@ -32,7 +32,7 @@ public class KafkaProducer {
                        log.error("Received error during kafka sending message: {}", throwable.getMessage());
                    }
                 });
-                sleep(10000L);
+                sleep(30000L);
             }
         });
     }

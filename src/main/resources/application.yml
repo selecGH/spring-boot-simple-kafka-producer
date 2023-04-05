@@ -17,7 +17,7 @@ spring:
       sasl:
         mechanism: PLAIN
         jaas:
-          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='KRFNEETUUSBJ2SYP' password='6Jo98e/IpBp6d+EsS3yGktX9YEI6ucjs1/pCwFCAG7N83gvHFNm/A1NOIbkSOGd/';
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='${dev.selec.backend.local.kafka-user}' password='${dev.selec.backend.local.kafka-secret}';
       session:
         timeout:
           ms: 45000
